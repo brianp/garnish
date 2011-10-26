@@ -6,9 +6,6 @@ module Garnish
       attr_accessor :record
       attr_accessor :template
       attr_accessor :record_class
-
-      include Garnish::Presenter::InstanceMethods
-      extend Garnish::Presenter::ClassMethods
     end
 
     module InstanceMethods
@@ -18,6 +15,16 @@ module Garnish
         @record_class = record.class
       end
 
+      def respond_to?(method, include_private = false)
+        if select_methods.include?(method)
+          record.respond_to?(method)
+        else
+          super
+        end
+      end
+
+      protected
+
       def method_missing(*args, &block)
         begin
           # Check the record being presented first
@@ -25,14 +32,6 @@ module Garnish
           @record.send(*args, &block)
         rescue NoMethodError
           @template.send(*args, &block)
-        end
-      end
-
-      def respond_to?(method, include_private = false)
-        if select_methods.include?(method)
-          record.respond_to?(method)
-        else
-          super
         end
       end
     end

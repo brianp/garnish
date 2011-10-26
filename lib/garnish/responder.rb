@@ -2,13 +2,7 @@ module Garnish
   module Responder
     extend ActiveSupport::Concern
 
-    module ClassMethods
-      def hello
-        puts "hello"
-      end
-    end
-
-    module InstanceMethods
+    included do
       def to_html
         vars = controller.instance_variables.reject {|x| x.to_s.include?("@_")}
 
@@ -24,6 +18,7 @@ module Garnish
           end
         end
 
+        super
       end
 
       private
@@ -34,6 +29,16 @@ module Garnish
       rescue NameError
         return false
       end
+    end
+
+    module ClassMethods
+      def hello
+        puts "hello"
+      end
+    end
+
+    module InstanceMethods
+
     end
 
   end

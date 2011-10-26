@@ -1,5 +1,3 @@
-require "garnish/version"
-
-module Garnish
-  # Your code goes here...
-end
+require 'garnish/version'
+require 'garnish/responder'
+require 'garnish/presenter'

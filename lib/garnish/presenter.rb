@@ -1,6 +1,7 @@
 module Garnish
   module Presenter
     extend ActiveSupport::Concern
+    include Garnish::Presenter::Relationships
 
     included do
       attr_accessor :record

@@ -44,4 +44,3 @@ module Garnish
 
   end
 end
-

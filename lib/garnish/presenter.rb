@@ -10,15 +10,15 @@ module Garnish
     end
 
     module InstanceMethods
-      def initialize(record, template)
-        @record = record
-        @template = template
-        @record_class = record.class
+      def initialize(r, t)
+        self.record = r
+        self.template = t
+        self.record_class = r.class
       end
 
       def respond_to?(method, include_private = false)
         if select_methods.include?(method)
-          record.respond_to?(method)
+          self.record.respond_to?(method)
         else
           super
         end
@@ -30,9 +30,9 @@ module Garnish
         begin
           # Check the record being presented first
           # If method doesn't exists check the template for helper convenience
-          @record.send(*args, &block)
+          self.record.send(*args, &block)
         rescue NoMethodError
-          @template.send(*args, &block)
+          self.template.send(*args, &block)
         end
       end
     end

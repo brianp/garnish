@@ -1,5 +1,6 @@
 module Garnish
   class Responder < ActionController::Responder
+    include Garnish::Converter
     def to_html
       vars = controller.instance_variables.reject {|x| x.to_s.include?("@_")}
 
@@ -14,7 +15,7 @@ module Garnish
 
         presenter_name = "#{klass.to_s}Presenter"
 
-        if class_exists?(presenter_name.to_sym)
+        if self.class_exists?(presenter_name.to_sym)
           if record.respond_to?(:each)
             presenter = record.map{ |v| presenter_name.constantize.new(v, controller.view_context) }
           else
@@ -26,15 +27,6 @@ module Garnish
       end
 
       super
-    end
-
-    private
-
-    def class_exists?(class_name)
-      klass = Module.const_get(class_name)
-      return klass.is_a?(Class)
-    rescue NameError
-      return false
     end
 
   end

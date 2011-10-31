@@ -1,5 +1,6 @@
 require 'garnish/version'
+require 'garnish/converter'
 require 'garnish/responder'
 require 'garnish/controller'
-require 'garnish/presenter'
 require 'garnish/presenter/relationships'
+require 'garnish/presenter'

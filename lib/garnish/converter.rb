@@ -13,7 +13,9 @@ module Garnish
 
     module InstanceMethods
 
-      def convert(record)
+      def convert(record, view = nil)
+        view ||= self.template
+
         if record.respond_to?(:each)
           klass = record.first.class
         else
@@ -24,9 +26,9 @@ module Garnish
 
         if self.class_exists?(presenter_name.to_sym)
           if record.respond_to?(:each)
-            presenter = record.map{ |v| presenter_name.constantize.new(v, self.template||controller.view_context) }
+            presenter = record.map{ |v| presenter_name.constantize.new(v, view) }
           else
-            presenter = presenter_name.constantize.new(record, self.template||controller.view_context)
+            presenter = presenter_name.constantize.new(record, view)
           end
         end
 

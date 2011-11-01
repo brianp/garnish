@@ -7,7 +7,7 @@ module Garnish
       vars.each do |var|
         record = controller.instance_variable_get(var.to_s)
 
-        presenter = convert(record)
+        presenter = convert(record, controller.view_context)
 
         controller.instance_variable_set(var.to_s, presenter)
       end

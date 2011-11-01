@@ -24,11 +24,11 @@ require 'garnish'
 # end
 
 class TestClass
-
+  def self.relations
+    {:users => []}
+  end
 end
 
 class TestClassPresenter
   include Garnish::Presenter
 end
-
-

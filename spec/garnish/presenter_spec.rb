@@ -10,9 +10,9 @@ describe "A Presenter" do
   context "class should delgate" do
     subject { TestClassPresenter }
 
-    it "method missing" do
-      TestClass.should_receive(:respond_to?).with(:each)
-      subject.respond_to?(:each).should_not be_nil
+    it "method missing to non presenter class" do
+      TestClass.should_receive(:test_method).and_raise(NoMethodError)
+      lambda {subject.test_method}.should raise_error
     end
   end
 

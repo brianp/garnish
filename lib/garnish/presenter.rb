@@ -26,20 +26,23 @@ module Garnish
 
       protected
 
-      def method_missing(*args, &block)
+      def method_missing(method, *args, &block)
         begin
           # Check the record being presented first
           # If method doesn't exists check the template for helper convenience
-          self.record.send(*args, &block)
+          self.record.send(method, *args, &block)
         rescue NoMethodError
-          self.template.send(*args, &block)
+          self.template.send(method, *args, &block)
         end
       end
     end
 
     module ClassMethods
+
+      protected
+
       def method_missing(method, *args, &block)
-        self.record_class.send(method, *args, &block)
+        record_class.send(method, *args, &block)
       end
     end
 

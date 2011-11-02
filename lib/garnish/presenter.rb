@@ -17,10 +17,10 @@ module Garnish
       end
 
       def respond_to?(method, include_private = false)
-        if select_methods.include?(method)
-          self.record.respond_to?(method)
-        else
+        if self.methods.include?(method)
           super
+        else
+          self.record.respond_to?(method)
         end
       end
 
@@ -39,7 +39,7 @@ module Garnish
 
     module ClassMethods
       def method_missing(method, *args, &block)
-        record_class.send(method, *args, &block)
+        self.record_class.send(method, *args, &block)
       end
     end
 

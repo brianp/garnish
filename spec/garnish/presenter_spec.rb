@@ -43,7 +43,6 @@ describe "A Presenter" do
       @test_class = TestClass.new
       @template = Class.new
       @test_presenter = TestClassPresenter.new(@test_class, @template)
-      @test_presenter.record.should equal @test_class
     end
 
     subject { @test_presenter }
@@ -74,4 +73,3 @@ describe "A Presenter" do
 
   end
 end
-

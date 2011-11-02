@@ -15,15 +15,15 @@ describe "A Presenter" do
 
       subject {@test_presenter}
 
-      it "and populate the record field" do
+      it "the record field" do
         subject.record.should equal @test_class
       end
 
-      it "and populate the template field" do
+      it "the template field" do
         subject.template.should equal @template
       end
 
-      it "and populate the record_class field" do
+      it "the record_class field" do
         subject.record_class.should equal @test_class.class
       end
     end

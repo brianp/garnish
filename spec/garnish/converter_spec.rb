@@ -2,6 +2,16 @@ require 'spec_helper'
 
 describe "A Garnish Converter" do
 
+  shared_examples_for "instance or class" do
+    it "should return true from class_exists if class exists" do
+      subject.class_exists?(:TestClassPresenter).should be_true
+    end
+
+    it "should return false from class_exists if class doesn't exists" do
+      subject.class_exists?(:BadClass).should be_false
+    end
+  end
+
   context "instance" do
 
     before(:each) do
@@ -12,13 +22,7 @@ describe "A Garnish Converter" do
 
     subject { @test_presenter }
 
-    it "should return true from class_exists if class exists" do
-      subject.class_exists?(:TestClassPresenter).should be_true
-    end
-
-    it "should return false from class_exists if class doesn't exists" do
-      subject.class_exists?(:BadClass).should be_false
-    end
+    it_should_behave_like "instance or class"
 
     context "with a template" do
       it "should take a record variable and wrap it in a presenter if a presenter exists" do
@@ -41,13 +45,7 @@ describe "A Garnish Converter" do
   context "class" do
     subject { TestClassPresenter }
 
-    it "should return true from class_exists if class exists" do
-      subject.class_exists?(:TestClassPresenter).should be_true
-    end
-
-    it "should return false from class_exists if class doesn't exists" do
-      subject.class_exists?(:BadClass).should be_false
-    end
+    it_should_behave_like "instance or class"
   end
 
 end

@@ -32,3 +32,6 @@ end
 class TestClassPresenter
   include Garnish::Presenter
 end
+
+class TestController < ActionController::Base
+end

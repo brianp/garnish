@@ -31,4 +31,3 @@ describe "A Presenter Relationship" do
   end
 
 end
-

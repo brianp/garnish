@@ -12,10 +12,6 @@ describe "A Garnish Converter" do
 
     subject { @test_presenter }
 
-    it "should define class_exists?" do
-      subject.respond_to?(:class_exists?).should be_true
-    end
-
     it "should return true from class_exists if class exists" do
       subject.class_exists?(:TestClassPresenter).should be_true
     end
@@ -39,14 +35,11 @@ describe "A Garnish Converter" do
         presenter.record.should equal @test_class
         presenter.template.should equal @template
       end
-    end  end
+    end
+  end
 
   context "class" do
     subject { TestClassPresenter }
-
-    it "should define class_exists?" do
-      subject.respond_to?(:class_exists?).should be_true
-    end
 
     it "should return true from class_exists if class exists" do
       subject.class_exists?(:TestClassPresenter).should be_true
@@ -58,5 +51,3 @@ describe "A Garnish Converter" do
   end
 
 end
-
-

@@ -8,8 +8,11 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' }, :cucumber => false, :wai
   watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb')
+  watch('Guardfile')
 end
 
-guard 'rspec', :cli => "--drb", :version => 2, :rvm => ['1.9.3'] do
-  watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
+guard 'rspec', :cli => "--drb --color", :version => 2, :rvm => ['1.9.3'] do
+  watch(%r{^spec/.+_spec\.rb$})
+  watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
+  watch('spec/spec_helper.rb')                        { "spec" }
 end

@@ -24,6 +24,14 @@ module Garnish
         end
       end
 
+      def to_s
+        self.record.to_s
+      end
+
+      def to_param
+        self.record.to_param
+      end
+
       protected
 
       def method_missing(method, *args, &block)

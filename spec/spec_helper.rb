@@ -27,6 +27,10 @@ class TestClass
   def self.relations
     {:users => []}
   end
+
+  def self.reflections
+    {:users => []}
+  end
 end
 
 class TestClassPresenter

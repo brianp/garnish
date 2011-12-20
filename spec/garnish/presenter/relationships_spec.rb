@@ -13,7 +13,7 @@ describe "A Presenter Relationship" do
     subject { @test_presenter }
 
     it "should have the records relationships defined" do
-      subject.respond_to?(:users).should be_true
+      subject.respond_to?(:users_p).should be_true
     end
 
   end

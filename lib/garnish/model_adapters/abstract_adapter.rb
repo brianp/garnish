@@ -3,12 +3,11 @@ module Garnish
     class AbstractAdapter
 
       def self.inherited(subclass)
-        @subclasses ||= []
-        @subclasses << subclass
+        @subclasses = subclass
       end
 
       def self.adapter_class
-        val = @subclasses.last #|| DefaultAdapter
+        val = @subclasses || Garnish::ModelAdapters::DefaultAdapter
       end
     end
   end

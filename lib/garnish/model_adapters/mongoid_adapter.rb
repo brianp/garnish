@@ -1,20 +1,11 @@
 module Garnish
   module ModelAdapters
-    module MongoidAdapter
-      extend ActiveSupport::Concern
+    class MongoidAdapter < AbstractAdapter
 
-      included do
+      def self.defined_relationships(klass)
+        klass.relations.keys
       end
 
-      module ClassMethods
-        def defined_relationships
-          self.relations.keys
-        end
-      end
     end
   end
-end
-
-module Mongoid::Document::ClassMethods
-  include Garnish::ModelAdapters::MongoidAdapter::ClassMethods
 end

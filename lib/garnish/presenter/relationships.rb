@@ -5,11 +5,11 @@ module Garnish
       include Garnish::Converter
 
       included do
-        relationships = self.record_class.defined_relationships
+        relationships = Garnish::ModelAdapters::AbstractAdapter.adapter_class.defined_relationships(self.record_class)
 
         relationships.map do |key|
-          define_method key do
-            arry = self.record.send(key)
+          define_method "#{key}_p" do
+            arry = self.record.send(key) #.where(cond)
             arry = convert(arry)
             arry
           end

@@ -5,7 +5,7 @@ module Garnish
       include Garnish::Converter
 
       included do
-        relationships = self.record_class.relations.keys
+        relationships = self.record_class.defined_relationships
 
         relationships.map do |key|
           define_method key do

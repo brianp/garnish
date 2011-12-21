@@ -1,13 +1,12 @@
 module Garnish
   module ModelAdapters
     class AbstractAdapter
-
       def self.inherited(subclass)
-        @subclasses = subclass
+        @subclass = subclass
       end
 
       def self.adapter_class
-        val = @subclasses || Garnish::ModelAdapters::DefaultAdapter
+        val = @subclass || Garnish::ModelAdapters::DefaultAdapter
       end
     end
   end

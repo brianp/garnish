@@ -24,7 +24,7 @@ module Garnish
 
         presenter_name = "#{klass.to_s}Presenter"
 
-        if self.class_exists?(presenter_name.to_sym)
+        if self.class.class_exists?(presenter_name.to_sym)
           if record.respond_to?(:each)
             presenter = record.map{ |v| presenter_name.constantize.new(v, view) }
           else
@@ -33,13 +33,6 @@ module Garnish
         end
 
         presenter
-      end
-
-      def class_exists?(class_name)
-        klass = Module.const_get(class_name)
-        return klass.is_a?(Class)
-      rescue NameError
-        return false
       end
     end
 

@@ -12,10 +12,13 @@ describe "A Presenter Relationship" do
 
     subject { @test_presenter }
 
-    it "should have the records relationships defined" do
-      subject.respond_to?(:users_p).should be_true
+    it "should have the records relationships defined as presenters" do
+      subject.respond_to?(:presented_users).should be_true
     end
 
+    it "should have the records relationships defined with shorthand" do
+      subject.respond_to?(:users_p).should be_true
+    end
   end
 
   context "class" do

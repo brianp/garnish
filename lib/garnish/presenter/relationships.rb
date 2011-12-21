@@ -8,11 +8,13 @@ module Garnish
         relationships = Garnish::ModelAdapters::AbstractAdapter.adapter_class.defined_relationships(self.record_class)
 
         relationships.map do |key|
-          define_method "#{key}_p" do |opts = nil, *rest|
+          define_method "presented_#{key}" do |opts = nil, *rest|
             arry = self.record.send(key).where(opts, *rest)
             arry = convert(arry)
             arry
           end
+
+          alias_method "#{key}_p", "presented_#{key}"
         end
       end
 

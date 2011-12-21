@@ -22,8 +22,6 @@ describe "A Garnish Converter" do
 
     subject { @test_presenter }
 
-    it_should_behave_like "instance or class"
-
     context "with a template" do
       it "should take a record variable and wrap it in a presenter if a presenter exists" do
         presenter = subject.convert(@test_class, @template)

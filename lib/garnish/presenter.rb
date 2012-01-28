@@ -1,13 +1,17 @@
 module Garnish
   module Presenter
     extend ActiveSupport::Concern
-    include Garnish::Presenter::Relationships
 
     included do
       attr_accessor :template
     end
 
     module InstanceMethods
+
+      def included(base)
+        base.send :include, Garnish::Presenter::Relationships
+        super
+      end
 
       protected
 

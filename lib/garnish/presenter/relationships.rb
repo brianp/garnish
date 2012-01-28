@@ -8,21 +8,15 @@ module Garnish
         relationships = Garnish::ModelAdapters::AbstractAdapter.adapter_class.defined_relationships(self)
 
         relationships.map do |key|
+          alias_method "#{key}_orig".to_sym, key.to_sym
           define_method "#{key}" do |opts = nil, *rest|
-            records = self.send(key)
+            records = self.send("#{key}_orig")
             arry = convert(records)
             records
           end
         end
       end
 
-      module ClassMethods
-        def record_class
-          str = self.to_s
-          str.slice!("Presenter")
-          str.constantize
-        end
-      end
     end
   end
 end

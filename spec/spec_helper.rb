@@ -5,6 +5,7 @@ Bundler.require(:development)
 
 require 'active_support/all'
 require 'action_controller'
+require 'garnish'
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
@@ -16,32 +17,36 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.before(:all) do
     require 'garnish'
-
-    class TestClass
-      def eigenclass
-        (class << self; self end)
-      end
-
-      def self.relations
-        {:users => []}
-      end
-
-      def self.reflections
-        {:users => []}
-      end
-    end
-
-    module TestClassPresenter
-      include Garnish::Presenter
-    end
-
-    class TestController < ActionController::Base
-    end
-
-    class TestResponder
-      include Garnish::Converter
-
-      attr_accessor :template
-    end
   end
+end
+
+class TestClass
+  def eigenclass
+    (class << self; self end)
+  end
+
+  def users
+    []
+  end
+
+  def self.relations
+    {:users => []}
+  end
+
+  def self.reflections
+    {:users => []}
+  end
+end
+
+module TestClassPresenter
+  include Garnish::Presenter
+end
+
+class TestController < ActionController::Base
+end
+
+class TestResponder
+  include Garnish::Converter
+
+  attr_accessor :template
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "A Garnish Converter", :focus => true do
+describe "A Garnish Converter" do
 
   context "instance" do
 

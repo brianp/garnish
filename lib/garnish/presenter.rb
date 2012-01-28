@@ -6,12 +6,14 @@ module Garnish
       attr_accessor :template
     end
 
-    module InstanceMethods
-
+    module ClassMethods
       def included(base)
         base.send :include, Garnish::Presenter::Relationships
         super
       end
+    end
+
+    module InstanceMethods
 
       protected
 

@@ -9,7 +9,6 @@ module Garnish
     module ClassMethods
       def included(base)
         base.send :include, Garnish::Presenter::Relationships
-        super
       end
     end
 

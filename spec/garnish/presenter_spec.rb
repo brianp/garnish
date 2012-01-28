@@ -16,7 +16,7 @@ describe "A Garnish Presenter" do
     test_class.this_call
   end
 
-  it "should include Garnish::Presenter:Relationships when included" do
+  it "should include Garnish::Presenter::Relationships when included" do
     test_class.eigenclass.included_modules.should include Garnish::Presenter::Relationships
   end
 end

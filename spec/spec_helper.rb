@@ -6,45 +6,42 @@ Bundler.require(:development)
 require 'active_support/all'
 require 'action_controller'
 
-Spork.prefork do
-  Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-  RSpec.configure do |config|
-    config.mock_with :rspec
+RSpec.configure do |config|
+  config.mock_with :rspec
 
-    config.treat_symbols_as_metadata_keys_with_true_values = true
-    config.filter_run :focus => true
-    config.run_all_when_everything_filtered = true
-  end
-end
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
+  config.before(:all) do
+    require 'garnish'
 
-Spork.each_run do
-  require 'garnish'
+    class TestClass
+      def eigenclass
+        (class << self; self end)
+      end
 
-  class TestClass
-    def eigenclass
-      (class << self; self end)
+      def self.relations
+        {:users => []}
+      end
+
+      def self.reflections
+        {:users => []}
+      end
     end
 
-    def self.relations
-      {:users => []}
+    module TestClassPresenter
+      include Garnish::Presenter
     end
 
-    def self.reflections
-      {:users => []}
+    class TestController < ActionController::Base
     end
-  end
 
-  module TestClassPresenter
-    include Garnish::Presenter
-  end
+    class TestResponder
+      include Garnish::Converter
 
-  class TestController < ActionController::Base
-  end
-
-  class TestResponder
-    include Garnish::Converter
-
-    attr_accessor :template
+      attr_accessor :template
+    end
   end
 end

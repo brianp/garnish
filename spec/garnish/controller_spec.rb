@@ -12,4 +12,9 @@ describe "A Garnished Controller" do
     subject.garnish
     subject.responder.should equal Garnish::Responder
   end
+
+  it "should call respond_to with :html" do
+    subject.should_receive(:respond_to).with(:html)
+    subject.garnish
+  end
 end

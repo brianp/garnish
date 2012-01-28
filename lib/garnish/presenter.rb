@@ -7,8 +7,8 @@ module Garnish
     end
 
     module ClassMethods
-      def included(base)
-        base.send :include, Garnish::Presenter::Relationships
+      def extended(base)
+        base.extend Garnish::Presenter::Relationships
       end
     end
 

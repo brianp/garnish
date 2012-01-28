@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "A Garnish Presenter" do
 
   let(:test_class) { TestClass.new }
-  before { test_class.class.send :include, TestClassPresenter }
+  before { test_class.extend TestClassPresenter }
 
   it "should add the template attribute accessor" do
     test_class.template = 42

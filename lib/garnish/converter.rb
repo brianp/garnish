@@ -27,8 +27,7 @@ module Garnish
         if self.class.module_exists?(presenter_name.to_sym)
           if record.respond_to?(:each)
             record.map do |v|
-              # v.extend(presenter_name.constantize)
-              v.class.send :include, presenter_name.constantize
+              v.extend(presenter_name.constantize)
               v.template = view
             end
           else

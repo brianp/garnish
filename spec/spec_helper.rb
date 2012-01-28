@@ -5,9 +5,8 @@ Bundler.require(:development)
 
 require 'active_support/all'
 require 'action_controller'
-require 'garnish'
 
-# Spork.prefork do
+Spork.prefork do
   Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
   RSpec.configure do |config|
@@ -17,25 +16,35 @@ require 'garnish'
     config.filter_run :focus => true
     config.run_all_when_everything_filtered = true
   end
-# end
-
-# Spork.each_run do
-
-# end
-
-class TestClass
-  def self.relations
-    {:users => []}
-  end
-
-  def self.reflections
-    {:users => []}
-  end
 end
 
-class TestClassPresenter
-  include Garnish::Presenter
-end
+Spork.each_run do
+  require 'garnish'
 
-class TestController < ActionController::Base
+  class TestClass
+    def eigenclass
+      (class << self; self end)
+    end
+
+    def self.relations
+      {:users => []}
+    end
+
+    def self.reflections
+      {:users => []}
+    end
+  end
+
+  module TestClassPresenter
+    include Garnish::Presenter
+  end
+
+  class TestController < ActionController::Base
+  end
+
+  class TestResponder
+    include Garnish::Converter
+
+    attr_accessor :template
+  end
 end

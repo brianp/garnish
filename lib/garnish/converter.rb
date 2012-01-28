@@ -3,9 +3,9 @@ module Garnish
     extend ActiveSupport::Concern
 
     module ClassMethods
-      def class_exists?(class_name)
+      def module_exists?(class_name)
         klass = Module.const_get(class_name)
-        return klass.is_a?(Class)
+        return klass.is_a?(Module)
       rescue NameError
         return false
       end
@@ -24,15 +24,18 @@ module Garnish
 
         presenter_name = "#{klass.to_s}Presenter"
 
-        if self.class.class_exists?(presenter_name.to_sym)
+        if self.class.module_exists?(presenter_name.to_sym)
           if record.respond_to?(:each)
-            presenter = record.map{ |v| presenter_name.constantize.new(v, view) }
+            record.map do |v|
+              v.extend(presenter_name.constantize)
+              v.template = view
+            end
           else
-            presenter = presenter_name.constantize.new(record, view)
+            record.extend(presenter_name.constantize)
+            record.template = view
           end
         end
 
-        presenter
       end
     end
 

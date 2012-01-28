@@ -1,41 +1,30 @@
 require 'spec_helper'
 
-describe "A Garnish Converter" do
-
-  shared_examples_for "instance or class" do
-    it "should return true from class_exists if class exists" do
-      subject.class_exists?(:TestClassPresenter).should be_true
-    end
-
-    it "should return false from class_exists if class doesn't exists" do
-      subject.class_exists?(:BadClass).should be_false
-    end
-  end
+describe "A Garnish Converter", :focus => true do
 
   context "instance" do
 
-    before(:each) do
-      @test_class = TestClass.new
-      @template = Class.new
-      @test_presenter = TestClassPresenter.new(@test_class, @template)
-    end
-
-    subject { @test_presenter }
+    let(:template) { stub }
+    let(:test_class) { TestClass.new }
+    let(:responder) { TestResponder.new }
 
     context "with a template" do
-      it "should take a record variable and wrap it in a presenter if a presenter exists" do
-        presenter = subject.convert(@test_class, @template)
-        presenter.class.should equal TestClassPresenter
-        presenter.record.should equal @test_class
+      it "should take a record variable and include the presenter module" do
+        responder.convert(test_class, template)
+        test_class.eigenclass.included_modules.should include TestClassPresenter
+      end
+
+      it "should take an array of records and include the presenter module" do
+        records = [test_class, TestClass.new, TestClass.new]
+        responder.convert(records)
+        records.map { |r| r.eigenclass.included_modules.should include TestClassPresenter }
       end
     end
 
     context "without a template" do
-      it "should take a record variable and wrap it in a presenter if a presenter exists" do
-        presenter = subject.convert(@test_class)
-        presenter.class.should equal TestClassPresenter
-        presenter.record.should equal @test_class
-        presenter.template.should equal @template
+      it "should take a record variable and include the presenter module" do
+       responder.convert(test_class)
+       test_class.eigenclass.included_modules.should include TestClassPresenter
       end
     end
   end
@@ -43,7 +32,13 @@ describe "A Garnish Converter" do
   context "class" do
     subject { TestClassPresenter }
 
-    it_should_behave_like "instance or class"
+    it "should return true from module_exists if module exists" do
+      subject.module_exists?(:TestClassPresenter).should be_true
+    end
+
+    it "should return false from module_exists if module doesn't exists" do
+      subject.module_exists?(:BadClass).should be_false
+    end
   end
 
 end

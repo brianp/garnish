@@ -29,16 +29,4 @@ describe "A Garnish Converter" do
     end
   end
 
-  context "class" do
-    subject { TestClassPresenter }
-
-    it "should return true from module_exists if module exists" do
-      subject.module_exists?(:TestClassPresenter).should be_true
-    end
-
-    it "should return false from module_exists if module doesn't exists" do
-      subject.module_exists?(:BadClass).should be_false
-    end
-  end
-
 end

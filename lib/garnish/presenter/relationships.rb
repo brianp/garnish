@@ -11,7 +11,7 @@ module Garnish
           alias_method "#{key}_orig".to_sym, key.to_sym
           define_method "#{key}" do |opts = nil, *rest|
             records = self.send("#{key}_orig")
-            arry = convert(records)
+            convert(records)
             records
           end
         end

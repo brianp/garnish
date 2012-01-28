@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "A Presenter Relationship" do
 
   let(:test_class) { TestClass.new }
-  before { TestClass.send :include, Garnish::Presenter::Relationships }
+  before { test_class.extend Garnish::Presenter::Relationships }
 
   it "should respond to the original method name of the relationships" do
     test_class.stub(:template => nil)

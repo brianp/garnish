@@ -27,18 +27,13 @@ describe "A Garnish Converter" do
        test_class.eigenclass.included_modules.should include TestClassPresenter
       end
     end
-  end
-
-  context "class" do
-    let(:test_class) { TestClass }
-    before { test_class.send :include, Garnish::Converter }
 
     it "should return true from module_exists if module exists" do
-      test_class.module_exists?(:TestClassPresenter).should be_true
+      responder.module_exists?(:TestClassPresenter).should be_true
     end
 
     it "should return false from module_exists if module doesn't exists" do
-      test_class.module_exists?(:BadClass).should be_false
+      responder.module_exists?(:BadClass).should be_false
     end
   end
 

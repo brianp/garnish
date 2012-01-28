@@ -2,16 +2,14 @@ module Garnish
   module Converter
     extend ActiveSupport::Concern
 
-    module ClassMethods
+    module InstanceMethods
+
       def module_exists?(class_name)
         klass = Module.const_get(class_name)
         return klass.is_a?(Module)
       rescue NameError
         return false
       end
-    end
-
-    module InstanceMethods
 
       def convert(record, view = nil)
         view ||= self.template
@@ -24,7 +22,7 @@ module Garnish
 
         presenter_name = "#{klass.to_s}Presenter"
 
-        if self.class.module_exists?(presenter_name.to_sym)
+        if module_exists?(presenter_name.to_sym)
           if record.respond_to?(:each)
             record.map do |v|
               v.extend(presenter_name.constantize)

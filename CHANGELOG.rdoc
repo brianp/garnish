@@ -1,0 +1,23 @@
+0.0.2 (February 1, 2012)
+
+* Added spec/README.rdoc
+* Added CHANGELOG.rdoc
+* Actually wrote some docs for README.rdoc
+* Version Bump to 0.0.2
+
+0.0.2 (January 28, 2011)
+
+* Almost a complete re-write from the original Decorator wrapping method to
+the new presenter inclusion method.
+* Updated all specs to adhere to new extension method.
+
+0.0.1 (November 03, 2011)
+
+* Initial Release
+
+0.0.1 (October 25, 2011)
+
+* Initial Commit
+
+
+

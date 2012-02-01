@@ -35,7 +35,6 @@ Define the user_presenter
 
   module UserPresenter
     include Garnish::Presenter
-
   end
 
 === 2. Add methods to your presenter
@@ -89,6 +88,53 @@ Garnish will now find and load presenters for any instance variables you set ins
 
   <span><%= @user.greeting %></span>
 
+== View Helpers
+
+Garnish plays very nicely when adding view helper methods into your presenter. Just treat them like a regular method.
+
+  module UserPresenter
+    include Garnish::Presenter
+
+    def profile_pic
+      image_tag profile_pic unless profile_pic.nil?
+    end
+  end
+
+== Relationships
+
+The real reason I got down to business. If I'm using presenters in my views I probably have presenters for multiple objects.
+
+  class User < ActiveRecord::Base
+    has_many :items
+  end
+
+  class Item < ActiveRecord::Base
+    belongs_to :user
+  end
+
+Assuming I have presenters for both of these models
+
+  module UserPresenter
+    include Garnish::Presenter
+  end
+
+  module ItemPresenter
+    include Garnish::Presenter
+
+    def picture
+      image_tag profile_pic unless profile_pic.nil?
+    end
+  end
+
+
+In my view when I'm accessing a Users Items via the resources proxy methods what I really want is an Item extended with presenter methods not just a regular item.
+
+Garnish handles this for us. Anytime a relationship is accessed on a Presenter resource the returned resources will also be extended with their presenter methods.
+
+  <%= @user.items.first.picture %>
+
+Works with no effort what so ever.
+
 == Questions or Problems?
 
 If you have any issues with Garnish which you cannot find the solution to, please add an {issue on GitHub}[https://github.com/brianp/garnish/issues] or fork the project and send a pull request.
@@ -96,5 +142,9 @@ If you have any issues with Garnish which you cannot find the solution to, pleas
 To get the specs running you should call +bundle+ and then +rake+. See the {spec/README}[https://github.com/brianp/garnish/blob/master/spec/README.rdoc] for more information.
 
 == Special Thanks
+
+{Fraiser Valley Ruby Brigade}[http://www.fvrb.org/]
+
+The Ruby Moguls
 
 Garnish was inspired by draper[https://github.com/jcasimir/draper/] and the RailsCast Pro episode #287 Presenters from Scratch. See the CHANGELOG[https://github.com/brianp/garnish/blob/master/CHANGELOG.rdoc] for the full list.

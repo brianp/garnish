@@ -1,2 +1,100 @@
-No docs yet but I couldn't go without Travis'ing it
-{<img src="http://travis-ci.org/brianp/garnish.png" />}[http://travis-ci.org/brianp/garnish]
+= Garnish {<img src="http://travis-ci.org/brianp/garnish.png" />}[http://travis-ci.org/brianp/garnish]
+
+RDocs[http://rdoc.info/projects/brianp/garnish]
+
+Garnish is a Presenter / Decorator pattern for models in Rails. It gives a home to presntation level view logic that normally litters helpers and view files. Using it can help you:
+
+* Keep helper files and views clean of if/else statements and other logic
+* Better define an interface for views to interact with models
+* Maintain a very familiar OOP pattern within your project directory
+* Keep you controller code clean by never having to instantiate the presenters
+* Handle Decorating / Presenting standard Rails relationships
+
+== Installation
+
+In <b>Rails 3</b>, add this to your Gemfile and run the +bundle+ command.
+
+  gem "garnish"
+
+Alternatively, you can install it as a plugin.
+
+  rails plugin install git://github.com/brianp/garnish.git
+
+
+== Getting Started
+
+A lot of magic happens with Garnish in an attempt to make things incredibly simple for you.
+
+=== 1. Define You Presenters (Generators coming soon!)
+
+Create a folder in app/ called presenters. ex <tt>app/presenters/</tt>
+
+Create a presenter matching the name of your model in your presenters folder. ex <tt>app/presenters/user_presenter.rb</tt>
+
+Define the user_presenter
+
+  module UserPresenter
+    include Garnish::Presenter
+
+  end
+
+=== 2. Add methods to your presenter
+
+Define method in your presenter as regular instance methods
+
+  module UserPresenter
+    include Garnish::Presenter
+
+    def greeting
+      if last_login.nil?
+        "Welcome #{name}, can we offer you a tour?"
+      else
+        "Welcome back #{name}"
+      end
+    end
+
+  end
+
+=== 3. Add the <tt>garnish</tt> call
+
+In <tt>app/controllers/application_controller.rb</tt> add the garnish call.
+
+  class ApplicationController < ActionController::Base
+    protect_from_forgery
+
+    garnish
+  end
+
+Or If you don't want to use Garnish application wide simply add the call into a specific controller.
+
+=== 4. Use respond_with
+
+The only change you need to make to start using your presenters now is to use respond_with inside any controller that has been garnished
+
+<tt>app/controllers/user_controller.rb</tt>
+
+  def show
+    @user = User.find(params[:id])
+
+    respond_with @user do |format|
+      format.html # show.html.erb
+    end
+  end
+
+Garnish will now find and load presenters for any instance variables you set inside your action. *NOT* just the ivar passed to the respond_with block.
+
+== 5. Start using your presenter methods
+
+<tt>app/views/users/show.html.erb</tt>
+
+  <span><%= @user.greeting %></span>
+
+== Questions or Problems?
+
+If you have any issues with Garnish which you cannot find the solution to, please add an {issue on GitHub}[https://github.com/brianp/garnish/issues] or fork the project and send a pull request.
+
+To get the specs running you should call +bundle+ and then +rake+. See the {spec/README}[https://github.com/brianp/garnish/blob/master/spec/README.rdoc] for more information.
+
+== Special Thanks
+
+Garnish was inspired by draper[https://github.com/jcasimir/draper/] and the RailsCast Pro episode #287 Presenters from Scratch. See the CHANGELOG[https://github.com/brianp/garnish/blob/master/CHANGELOG.rdoc] for the full list.

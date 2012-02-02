@@ -10,6 +10,13 @@ Garnish is a Presenter / Decorator pattern for models in Rails. It gives a home 
 * Keep you controller code clean by never having to instantiate the presenters
 * Handle Decorating / Presenting standard Rails relationships
 
+== Requirements
+
+Garnish Has been tested with
+
+* Rails 3
+* Ruby 1.9.2, 1.9.3
+
 == Installation
 
 In <b>Rails 3</b>, add this to your Gemfile and run the +bundle+ command.
@@ -39,7 +46,7 @@ Define the user_presenter
 
 === 2. Add methods to your presenter
 
-Define method in your presenter as regular instance methods
+Define methods in your presenter as regular instance methods
 
   module UserPresenter
     include Garnish::Presenter

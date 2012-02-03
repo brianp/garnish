@@ -2,7 +2,7 @@
 
 RDocs[http://rdoc.info/projects/brianp/garnish]
 
-Garnish is a Presenter / Decorator pattern for models in Rails. It gives a home to presntation level view logic that normally litters helpers and view files. Using it can help you:
+Garnish is a Presenter / Decorator pattern for models in Rails. It gives a home to presentation level view logic that normally litters helpers and view files. Using it can help you:
 
 * Keep helper files and views clean of if/else statements and other logic
 * Better define an interface for views to interact with models
@@ -134,7 +134,7 @@ Assuming I have presenters for both of these models
   end
 
 
-In my view when I'm accessing a Users Items via the resources proxy methods what I really want is an Item extended with presenter methods not just a regular item.
+In my view when I'm accessing a user's items via the association what I really want is an Item extended with presenter methods not just a regular item.
 
 Garnish handles this for us. Anytime a relationship is accessed on a Presenter resource the returned resources will also be extended with their presenter methods.
 
@@ -150,7 +150,7 @@ To get the specs running you should call +bundle+ and then +rake+. See the {spec
 
 == Special Thanks
 
-{Fraiser Valley Ruby Brigade}[http://www.fvrb.org/]
+{Fraser Valley Ruby Brigade}[http://www.fvrb.org/]
 
 The Ruby Moguls
 

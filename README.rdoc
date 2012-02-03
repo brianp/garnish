@@ -136,7 +136,7 @@ Assuming I have presenters for both of these models
 
 In my view when I'm accessing a user's items via the association what I really want is an Item extended with presenter methods not just a regular item.
 
-Garnish handles this for us. Anytime a relationship is accessed on a Presenter resource the returned resources will also be extended with their presenter methods.
+Garnish handles this for us. Anytime a relationship is accessed on a garnished resource the returned resources will also be extended with their presenter methods.
 
   <%= @user.items.first.picture %>
 

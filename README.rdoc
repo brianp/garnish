@@ -89,7 +89,7 @@ The only change you need to make to start using your presenters now is to use re
 
 Garnish will now find and load presenters for any instance variables you set inside your action. *NOT* just the ivar passed to the respond_with block.
 
-== 5. Start using your presenter methods
+=== 5. Start using your presenter methods
 
 <tt>app/views/users/show.html.erb</tt>
 

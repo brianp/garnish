@@ -18,7 +18,7 @@ module Garnish
     # @example
     #   blog.posts.each { |post| post.name }
     #
-    # @return [Object]
+    # @return [Collection]
     [:to_a, :each].map do |method|
       define_method method do
         records = @relation.send(method)

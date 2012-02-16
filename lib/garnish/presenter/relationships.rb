@@ -11,7 +11,7 @@ module Garnish
             alias_method "#{key}_orig".to_sym, key.to_sym
             define_method "#{key}" do |opts = nil, *rest|
               records = self.send("#{key}_orig")
-              Garnish::Collection.new(records, self.template)
+              Garnish::Collection.new(records, template)
             end
           end
         end

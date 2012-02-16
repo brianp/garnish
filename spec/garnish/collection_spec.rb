@@ -22,13 +22,12 @@ describe Garnish::Collection do
 
   describe "method chains should return the existing collection" do
     it "should be the same collection" do
-      relation.stub(:limit)
+      relation.stub(:limit => collection)
       collection.limit(1).should eq(collection)
     end
 
     it "should be the same collection" do
-      relation.stub(:limit)
-      relation.stub(:order)
+      relation.stub(:limit => collection, :order => collection)
       collection.limit(1).order(:desc).should eq(collection)
     end
   end

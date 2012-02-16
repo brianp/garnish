@@ -6,6 +6,8 @@ module Garnish
     attr_accessor :relation
     attr_accessor :template
 
+    delegate :avg, :max, :min, :sum, :length, :size, :count, :to => :relation
+
     def initialize(relation, template)
       @relation = relation
       @template = template
@@ -25,16 +27,23 @@ module Garnish
       end
     end
 
+    def respond_to?(method)
+      @relation.respond_to?(method)
+    end
+
     protected
 
     def method_missing(method, *args, &block)
       resp = @relation.send(method, *args, &block)
 
-      if resp.equal? @record
+      if resp.equal? @relation
         self
-      elsif resp.instance_of? @record.class
-        Garnish::Collection.new(resp)
+      elsif resp.instance_of? @relation.class
+        Garnish::Collection.new(resp, @template)
+      elsif resp.respond_to? :each
+        Garnish::Collection.new(resp, @template)
       else
+        convert(resp)
         resp
       end
     end

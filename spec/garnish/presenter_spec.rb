@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "A Garnish Presenter" do
+describe Garnish::Presenter do
 
   let(:test_class) { TestClass.new }
   before { TestClass.send :include, TestClassPresenter }

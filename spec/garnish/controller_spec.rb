@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "A Garnished Controller" do
+describe Garnish::Controller do
 
   subject { TestController }
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "A Garnish Converter" do
+describe Garnish::Converter do
 
   context "instance" do
 

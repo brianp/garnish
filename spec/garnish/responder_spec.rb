@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "The Garnished Responder" do
+describe Garnish::Responder do
 
   let(:responder) { Garnish::Responder.new(controller, resources) }
   let(:formats) { stub(:formats, :first => nil) }

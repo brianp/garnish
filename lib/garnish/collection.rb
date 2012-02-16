@@ -49,4 +49,3 @@ module Garnish
     end
   end
 end
-

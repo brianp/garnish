@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "A Presenter Relationship" do
+describe Garnish::Presenter::Relationships do
 
   let(:test_class) { TestClass.new }
   before { test_class.extend Garnish::Presenter::Relationships }
@@ -11,7 +11,8 @@ describe "A Presenter Relationship" do
   end
 
   it "should call convert on the records of the relationship" do
-    test_class.should_receive(:convert)
+    test_class.stub(:template => stub)
+    Garnish::Collection.should_receive(:new)
     test_class.users
   end
 

@@ -13,18 +13,26 @@ module Garnish
       @template = template
     end
 
-    # Call the method on the relation object and then convert the results
+    # Call each on the relation and return the block
     #
     # @example
     #   blog.posts.each { |post| post.name }
     #
     # @return [Collection]
-    [:to_a, :each].map do |method|
-      define_method method do
-        records = @relation.send(method)
-        convert(records)
-        records
-      end
+    def each(&block)
+      to_a.each { |member| block.call(member) }
+    end
+
+    # Call to_a and return converted records
+    #
+    # @example
+    #   blog.posts.each { |post| post.name }
+    #
+    # @return [Collection]
+    def to_a
+      records = @relation.to_a
+      convert(records)
+      records
     end
 
     def respond_to?(method)

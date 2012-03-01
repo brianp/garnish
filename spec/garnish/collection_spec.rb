@@ -10,9 +10,20 @@ describe Garnish::Collection do
     collection.relation.should eq(relation)
   end
 
-  it "should pass the each method to the relation" do
-    relation.should_receive(:each)
-    collection.each
+  describe "the each method" do
+    let(:array) { stub(:array, :each => nil) }
+    before { collection.stub(:convert => array) }
+
+    it "should call to_a" do
+      relation.should_receive(:to_a).and_return(array)
+      collection.each
+    end
+
+    it "should call each on the resulting array" do
+      relation.stub(:to_a => array)
+      array.should_receive(:each)
+      collection.each
+    end
   end
 
   it "should pass the to_a method to the relation" do

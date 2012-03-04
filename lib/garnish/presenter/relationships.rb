@@ -9,7 +9,7 @@ module Garnish
 
           relationships.map do |key|
             alias_method "#{key}_orig".to_sym, key.to_sym
-            define_method "#{key}" do |opts = nil, *rest|
+            define_method "#{key}" do |*rest|
               records = self.send("#{key}_orig")
               Garnish::Collection.new(records, template)
             end

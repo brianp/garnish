@@ -1,7 +1,4 @@
-= Garnish {<img src="http://travis-ci.org/brianp/garnish.png" alt="Build Status"
-/>}[http://travis-ci.org/brianp/garnish] {<img
-src="https://gemnasium.com/brianp/garnish.png" alt="Dependency Status"
-/>}[https://gemnasium.com/brianp/garnish]
+= Garnish {<img src="http://travis-ci.org/brianp/garnish.png" alt="Build Status" />}[http://travis-ci.org/brianp/garnish] {<img src="https://gemnasium.com/brianp/garnish.png" alt="Dependency Status" />}[https://gemnasium.com/brianp/garnish]
 
 RDocs[http://rdoc.info/projects/brianp/garnish]
 

@@ -1,3 +1,7 @@
+0.0.6.1 (March 4, 2012)
+
+* Added support for jruby.
+
 0.0.6 (March 3, 2012)
 
 * Added support for Ruby 1.8.7, REE & Rubinius

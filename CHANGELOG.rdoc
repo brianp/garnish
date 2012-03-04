@@ -1,6 +1,9 @@
 0.0.6.1 (March 4, 2012)
 
 * Added support for jruby.
+* Updated readme.
+* Updated spec readme.
+* Added dependency status via Gemnasium.
 
 0.0.6 (March 3, 2012)
 

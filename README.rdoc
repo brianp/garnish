@@ -1,4 +1,7 @@
-= Garnish {<img src="http://travis-ci.org/brianp/garnish.png" />}[http://travis-ci.org/brianp/garnish]
+= Garnish {<img src="http://travis-ci.org/brianp/garnish.png" alt="Build Status"
+/>}[http://travis-ci.org/brianp/garnish] {<img
+src="https://gemnasium.com/brianp/garnish.png" alt="Dependency Status"
+/>}[https://gemnasium.com/brianp/garnish]
 
 RDocs[http://rdoc.info/projects/brianp/garnish]
 
@@ -15,7 +18,7 @@ Garnish is a Presenter / Decorator pattern for models in Rails. It gives a home 
 Garnish Has been tested with
 
 * Rails 3
-* Ruby 1.8.7, 1.9.2, 1.9.3, REE, Rubinius
+* Ruby 1.8.7, 1.9.2, 1.9.3, REE, JRuby, Rubinius
 
 == Installation
 

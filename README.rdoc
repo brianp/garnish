@@ -1,4 +1,4 @@
-http://www.brianpearce.ca/images/garnish.png"
+http://www.brianpearce.ca/images/garnish.png
 
 {<img src="https://secure.travis-ci.org/brianp/garnish.png" alt="Build Status" />}[http://travis-ci.org/brianp/garnish] {<img src="https://gemnasium.com/brianp/garnish.png" alt="Dependency Status" />}[https://gemnasium.com/brianp/garnish]
 

@@ -26,11 +26,6 @@ In <b>Rails 3</b>, add this to your Gemfile and run the +bundle+ command.
 
   gem "garnish"
 
-Alternatively, you can install it as a plugin.
-
-  rails plugin install git://github.com/brianp/garnish.git
-
-
 == Getting Started
 
 A lot of magic happens with Garnish in an attempt to make things incredibly simple for you.

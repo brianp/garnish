@@ -17,7 +17,7 @@ Garnish is a Presenter / Decorator pattern for models in Rails. It gives a home 
 Garnish Has been tested with
 
 * Rails 3
-* Ruby 1.8.7, 1.9.2, 1.9.3, REE, JRuby, Rubinius
+* Ruby 1.8.7, 1.9.2, 1.9.3, 2.0.0, REE, JRuby, Rubinius
 * ActiveRecord, Mongoid
 
 == Installation

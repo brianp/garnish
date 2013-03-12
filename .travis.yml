@@ -10,3 +10,4 @@ rvm:
   - jruby-18mode
   - jruby-19mode
   - ruby-head
+  - 2.0.0

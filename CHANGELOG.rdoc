@@ -4,6 +4,7 @@
 * Fixed broken image.
 * Removed gemnasium dependency.
 * Added code climate.
+* Tested on Ruby 2.0.0
 
 0.0.6.1 (March 4, 2012)
 

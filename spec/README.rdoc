@@ -7,4 +7,4 @@ To run the specs first run the +bundle+ command to install the necessary gems an
   bundle
   rake
 
-The specs currently run on Ruby 1.8.7, 1.9.2, 1.9.3, REE, JRuby or Rubinius.
+The specs currently run on Ruby 1.8.7, 1.9.2, 1.9.3, 2.0.0, REE, JRuby and Rubinius.

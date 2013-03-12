@@ -12,13 +12,10 @@ module Garnish
       end
     end
 
-    module InstanceMethods
+    protected
 
-      protected
-
-      def method_missing(method, *args, &block)
-        self.template.send(method, *args, &block) unless @template.blank?
-      end
+    def method_missing(method, *args, &block)
+      self.template.send(method, *args, &block) unless @template.blank?
     end
 
   end

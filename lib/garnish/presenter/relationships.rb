@@ -3,7 +3,7 @@ module Garnish
     module Relationships
 
       def self.extended(base)
-        base.extend Garnish::Converter::InstanceMethods
+        base.extend Garnish::Converter
         base.class_eval do
           relationships = Garnish::ModelAdapters::AbstractAdapter.adapter_class.defined_relationships(self)
 

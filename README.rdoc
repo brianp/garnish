@@ -1,6 +1,6 @@
 http://www.brianpearce.ca/images/garnish.png
 
-{<img src="https://secure.travis-ci.org/brianp/garnish.png" alt="Build Status" />}[http://travis-ci.org/brianp/garnish] {<img src="https://gemnasium.com/brianp/garnish.png" alt="Dependency Status" />}[https://gemnasium.com/brianp/garnish]
+{<img src="https://secure.travis-ci.org/brianp/garnish.png" alt="Build Status" />}[http://travis-ci.org/brianp/garnish] {<img src="https://codeclimate.com/github/brianp/garnish.png" />}[https://codeclimate.com/github/brianp/garnish]
 
 RDocs[http://rdoc.info/projects/brianp/garnish]
 

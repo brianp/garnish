@@ -21,6 +21,10 @@ Garnish Has been tested with
 * Ruby 1.8.7, 1.9.2, 1.9.3, 2.0.0, REE, JRuby, Rubinius
 * ActiveRecord, Mongoid
 
+_notes:_ `>1.9.3` requires you to lock `activesupport` and `actionpack` at
+`>4.0.0`. For this reason we have officially dropped support for ruby
+1.9.2 and lower. Although it will most likely work without a problem.
+
 ## Installation
 
 In **Rails 3**, add this to your Gemfile and run the `bundle` command.
@@ -170,4 +174,5 @@ To get the specs running you should call `bundle` and then `rake`. See the [spec
 
 The Ruby Moguls
 
-Garnish was inspired by [draper](https://github.com/jcasimir/draper/) and the RailsCast Pro episode #287 Presenters from Scratch. See the [CHANGELOG](https://github.com/brianp/garnish/blob/master/CHANGELOG.rdoc) for the full list.
+Garnish was inspired by [draper](https://github.com/jcasimir/draper/) and the RailsCast Pro episode #287 Presenters from Scratch.
+See the [CHANGELOG](https://github.com/brianp/garnish/blob/master/CHANGELOG.rdoc) for the full list.

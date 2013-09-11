@@ -100,7 +100,7 @@ Garnish will now find and load presenters for any instance variables you set ins
 
 `app/views/users/show.html.erb`
 
-```erb app/views/users/show.html.erb
+```erb
   <span><%= @user.greeting %></span>
 ```
 
@@ -171,4 +171,3 @@ To get the specs running you should call `bundle` and then `rake`. See the [spec
 The Ruby Moguls
 
 Garnish was inspired by [draper](https://github.com/jcasimir/draper/) and the RailsCast Pro episode #287 Presenters from Scratch. See the [CHANGELOG](https://github.com/brianp/garnish/blob/master/CHANGELOG.rdoc) for the full list.
-arnish was inspired by [draper](https://github.com/jcasimir/draper/) and the RailsCast Pro episode #287 Presenters from Scratch. See the [CHANGELOG](https://github.com/brianp/garnish/blob/master/CHANGELOG.rdoc) for the full list.

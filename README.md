@@ -18,12 +18,12 @@ Garnish is a Presenter / Decorator pattern for models in Rails. It gives a home 
 Garnish Has been tested with
 
 * Rails 3.1+
-* Ruby 1.8.7, 1.9.2, 1.9.3, 2.0.0, REE, JRuby, Rubinius
+* Ruby 1.9.3, 2.0.0, JRuby, Rubinius
 * ActiveRecord, Mongoid
 
-_notes:_ `>1.9.3` requires you to lock `activesupport` and `actionpack` at
+_Notes:_ `>1.9.3` requires you to lock `activesupport` and `actionpack` at
 `>4.0.0`. For this reason we have officially dropped support for ruby
-1.9.2 and lower. Although it will most likely work without a problem.
+1.9.2 and earlier. Although it will most likely work without a problem.
 
 ## Installation
 

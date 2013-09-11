@@ -1,6 +1,5 @@
 rvm:
   - 1.9.3
-  - rbx
   - rbx-19mode
   - jruby
   - jruby-19mode

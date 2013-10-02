@@ -3,6 +3,8 @@ module Garnish
     extend ActiveSupport::Concern
 
     included do
+      include InstanceMethods
+
       attr_accessor :template
     end
 
@@ -12,10 +14,13 @@ module Garnish
       end
     end
 
-    protected
+    module InstanceMethods
 
-    def method_missing(method, *args, &block)
-      self.template.send(method, *args, &block) unless @template.blank?
+      protected
+
+      def method_missing(method, *args, &block)
+        self.template.send(method, *args, &block) unless @template.blank?
+      end
     end
 
   end

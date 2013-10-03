@@ -31,7 +31,6 @@ module Garnish
           record.template = view
         end
       end
-
     end
 
   end
